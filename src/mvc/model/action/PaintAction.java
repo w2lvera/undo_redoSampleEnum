@@ -20,7 +20,6 @@ public class PaintAction {
     Point2D[] pNew;
     Point2D[] pOld;
     MyShape shape;
-    MyShape shape1;
     ActionBehavior ab;
 
     public PaintAction(ActionBehavior ab) {
@@ -60,7 +59,6 @@ public class PaintAction {
     public void actionPress(Point2D p) {
         this.p[0] = p;
         shape = ab.actionPress(model, this.p);
-        //shape1 = shape.clone();
         pOld[0].setLocation(shape.getShape().getMinX(), shape.getShape().getMinY());
         pOld[1].setLocation(shape.getShape().getMaxX(), shape.getShape().getMaxY());
 
@@ -77,10 +75,10 @@ public class PaintAction {
        
         pNew[0].setLocation(shape.getShape().getMinX(), shape.getShape().getMinY());
         pNew[1].setLocation(shape.getShape().getMaxX(), shape.getShape().getMaxY());
-        
         shape.getShape().setFrameFromDiagonal(pOld[0],pOld[1]);
-                
+        
         ab.execute(model, shape);
+        
         pOld[0].setLocation(pNew[0]);
         pOld[1].setLocation(pNew[1]);
 
@@ -106,7 +104,6 @@ public class PaintAction {
         help.pNew[0] = pNew[0];
         help.pNew[1] = pNew[1];
         help.shape = shape;
-        help.shape1 = shape1;
         help.setModel(model);
         return help;
     }

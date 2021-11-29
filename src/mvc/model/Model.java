@@ -93,11 +93,11 @@ public class Model extends Observable {
         return activeShape;
     }
 
-    public MyShape reseverMove(MyShape shape) {
+    public void reseverMove() {
 
         setChanged();
         notifyObservers();
-        return shape;
+        
     }
 
 }

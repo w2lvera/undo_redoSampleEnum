@@ -51,12 +51,14 @@ public enum ActionBehavior {
 
         @Override
         public MyShape execute(Model model,MyShape shape) {
-            return model.reseverMove(shape);
+            model.reseverMove();
+            return shape;
         }
 
         @Override
         public MyShape unexecute(Model model,MyShape shape) {
-            return  model.reseverMove(shape);
+             model.reseverMove();
+            return shape;
         }
     };
    
