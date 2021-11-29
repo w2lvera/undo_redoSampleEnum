@@ -99,10 +99,10 @@ public class PaintAction {
     @Override
     public PaintAction clone() {
         PaintAction help = new PaintAction(this.ab);
-        help.pOld[0] = pOld[0];
-        help.pOld[1] = pOld[1];
-        help.pNew[0] = pNew[0];
-        help.pNew[1] = pNew[1];
+        help.pOld[0] = (Point2D)pOld[0].clone();
+        help.pOld[1] = (Point2D)pOld[1].clone();
+        help.pNew[0] = (Point2D)pNew[0].clone();
+        help.pNew[1] = (Point2D)pNew[1].clone();
         help.shape = shape;
         help.setModel(model);
         return help;
