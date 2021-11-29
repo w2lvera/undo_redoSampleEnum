@@ -5,18 +5,18 @@
  */
 package mvc.menu;
 
-import mvc.model.action.ActionBehavior;
 import mvc.state.State;
+import mvc.model.action.PaintAction;
 
 /**
  *
  * @author Netbeans
  */
 public class SwitchAction implements Command{
-    ActionBehavior ab;
+    PaintAction ab;
     State state;
 
-    public SwitchAction(ActionBehavior ab, State state) {
+    public SwitchAction(PaintAction ab, State state) {
         this.ab = ab;
         this.state = state;
     }

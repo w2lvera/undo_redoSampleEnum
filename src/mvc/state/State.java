@@ -9,12 +9,13 @@ import java.awt.Color;
 import java.awt.geom.Rectangle2D;
 import java.awt.geom.RectangularShape;
 import mvc.model.Model;
-import mvc.model.action.ActionBehavior;
+import mvc.model.action.Draw;
 import mvc.model.action.PaintAction;
 import mvc.model.shape.FillBehavior;
 import mvc.model.shape.MyShape;
 import mvc.view.MyFrame;
 import mvc.view.MyPanel;
+import mvc.model.action.PaintAction;
 
 /**
  *
@@ -29,8 +30,7 @@ public class State {
         this.model = model;
         sampleShape = new MyShape(new Rectangle2D.Double(), FillBehavior.Fill, Color.BLUE);
         model.setSampleShape(sampleShape);
-        action = new PaintAction();
-        action.setAb(ActionBehavior.Draw);
+        action = new Draw();
         action.setModel(model);
     }
 
@@ -39,6 +39,7 @@ public class State {
 
     public void setAction(PaintAction action) {
         this.action = action;
+        action.setModel(model);
     }
 
     public PaintAction getAction() {
@@ -53,9 +54,7 @@ public class State {
         this.sampleShape = sampleShape;
     }
 
-    public void setAction(ActionBehavior actionBehavior) {
-        action.setAb(actionBehavior);
-    }
+    
 
     public void setRectangularShape(RectangularShape rs) {
         sampleShape.setShape(rs);

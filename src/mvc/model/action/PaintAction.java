@@ -5,106 +5,20 @@
  */
 package mvc.model.action;
 
-import java.awt.geom.Point2D;
+
 import mvc.model.Model;
 import mvc.model.shape.MyShape;
+import java.awt.geom.Point2D;
 
 /**
  *
- * @author Netbeans
+ * @author Wera
  */
-public class PaintAction {
-
-    Model model;
-    Point2D[] p;
-    Point2D[] pNew;
-    Point2D[] pOld;
-    MyShape shape;
-    ActionBehavior ab;
-
-    public PaintAction(ActionBehavior ab) {
-        this.ab = ab;
-        p = new Point2D[2];
-        pNew = new Point2D[2];
-        pOld = new Point2D[2];
-        pOld[0] = new Point2D.Double();
-        pOld[1] = new Point2D.Double();
-        pNew[0] = new Point2D.Double();
-        pNew[1] = new Point2D.Double();
-    }
-
-    public void setAb(ActionBehavior ab) {
-        this.ab = ab;
-    }
-
-    public void setModel(Model model) {
-        this.model = model;
-    }
-
-    public PaintAction() {
-        p = new Point2D[2];
-        pNew = new Point2D[2];
-        pOld = new Point2D[2];
-        pOld[0] = new Point2D.Double();
-        pOld[1] = new Point2D.Double();
-        pNew[0] = new Point2D.Double();
-        pNew[1] = new Point2D.Double();
-
-    }
-
-    public MyShape getShape() {
-        return shape;
-    }
-
-    public void actionPress(Point2D p) {
-        this.p[0] = p;
-        shape = ab.actionPress(model, this.p);
-        pOld[0].setLocation(shape.getShape().getMinX(), shape.getShape().getMinY());
-        pOld[1].setLocation(shape.getShape().getMaxX(), shape.getShape().getMaxY());
-
-    }
-
-    public void actionDrag(Point2D p1) {
-        this.p[1] = p1;
-        ab.actionDrag(model, this.p);
-        
-
-    }
-
-    public void execute() {
-       
-        pNew[0].setLocation(shape.getShape().getMinX(), shape.getShape().getMinY());
-        pNew[1].setLocation(shape.getShape().getMaxX(), shape.getShape().getMaxY());
-        shape.getShape().setFrameFromDiagonal(pOld[0],pOld[1]);
-        
-        ab.execute(model, shape);
-        
-        pOld[0].setLocation(pNew[0]);
-        pOld[1].setLocation(pNew[1]);
-
-    }
-
-    public void unexecute() {
-        pNew[0].setLocation(shape.getShape().getMinX(), shape.getShape().getMinY());
-        pNew[1].setLocation(shape.getShape().getMaxX(), shape.getShape().getMaxY());
-        
-        shape.getShape().setFrameFromDiagonal(pOld[0],pOld[1]);
-                
-        ab.unexecute(model, shape);
-        pOld[0].setLocation(pNew[0]);
-        pOld[1].setLocation(pNew[1]);
-
-    }
-
-    @Override
-    public PaintAction clone() {
-        PaintAction help = new PaintAction(this.ab);
-        help.pOld[0] = pOld[0];
-        help.pOld[1] = pOld[1];
-        help.pNew[0] = pNew[0];
-        help.pNew[1] = pNew[1];
-        help.shape = shape;
-        help.setModel(model);
-        return help;
-    }
+public interface PaintAction {
+    void actionPress(Point2D p1);
+    void actionDrag(Point2D p1);
+    void setModel(Model m);
+    void execute();
+    void unexecute();
+    PaintAction clone();
 }

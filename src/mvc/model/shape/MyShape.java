@@ -11,7 +11,7 @@ import java.awt.Graphics2D;
 import java.awt.Paint;
 import java.awt.geom.Point2D;
 import java.awt.geom.RectangularShape;
-import mvc.model.action.ActionBehavior;
+import mvc.model.action.PaintAction;
 
 /**
  *

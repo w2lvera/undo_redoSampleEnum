@@ -25,13 +25,13 @@ import mvc.menu.SwitchFill;
 import mvc.menu.SwitchRedo;
 import mvc.menu.SwitchShape;
 import mvc.menu.SwitchUndo;
-import mvc.model.action.ActionBehavior;
-import static mvc.model.action.ActionBehavior.Draw;
-import static mvc.model.action.ActionBehavior.Move;
+import mvc.model.action.Draw;
+import mvc.model.action.Move;
 import mvc.model.shape.FillBehavior;
 import mvc.model.shape.MyShape;
 import mvc.model.undomachine.UndoMachine;
 import mvc.state.State;
+import mvc.model.action.PaintAction;
 
 /**
  *
@@ -67,9 +67,9 @@ public class MyFrame extends JFrame {
         menuItems.add(new SwitchState("залитый", new ImageIcon("fill.gif"),
                 new SwitchFill( FillBehavior.Fill,state)));
         menuItems.add(new SwitchState("рисовать", new ImageIcon("draw.gif"),
-                new SwitchAction( Draw,state)));
+                new SwitchAction( new Draw(),state)));
         menuItems.add(new SwitchState("двигать", new ImageIcon("move.gif"),
-                new SwitchAction( Move,state)));
+                new SwitchAction( new Move(),state)));
         menuItems.add(new SwitchUndo("undo", new ImageIcon("undo.gif"), um));
         menuItems.add(new SwitchRedo("redo", new ImageIcon("redo.gif"), um));
         menuItems.add(new SwitchState("выбор цвета", new ImageIcon("colors.gif"),
