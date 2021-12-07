@@ -27,9 +27,10 @@ public class Draw implements PaintAction{
        p = new Point2D[2]; 
     }
     @Override
-    public void actionPress(Point2D p1) {
+    public MyShape actionPress(Point2D p1) {
         p[0] = p1;
         myShape = model.actionPressDraw(p);
+        return myShape;
     }
 
     @Override

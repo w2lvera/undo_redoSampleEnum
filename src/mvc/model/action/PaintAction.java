@@ -15,7 +15,7 @@ import java.awt.geom.Point2D;
  * @author Wera
  */
 public interface PaintAction {
-    void actionPress(Point2D p1);
+   MyShape actionPress(Point2D p1);
     void actionDrag(Point2D p1);
     void setModel(Model m);
     void execute();

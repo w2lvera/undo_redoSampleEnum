@@ -38,7 +38,7 @@ public class Controller {
     }
 
     public void mousePressed(Point point) {
-        state.getAction().actionPress(point);
+       if( state.getAction().actionPress(point)!=null)
          um.add(state.getAction().clone());
     }
 

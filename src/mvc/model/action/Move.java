@@ -29,11 +29,11 @@ public class Move implements PaintAction{
     }
 
     @Override
-    public void actionPress(Point2D p1) {
+    public MyShape actionPress(Point2D p1) {
        p[0]=p1;
        shapeNew =  model.acctionPressMove(p);
        if(shapeNew!=null)shapeOld = shapeNew.clone();
-       
+       return shapeNew;
     }
 
     @Override
